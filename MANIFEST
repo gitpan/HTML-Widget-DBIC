@@ -1,0 +1,19 @@
+MANIFEST
+LICENSE
+README
+Todo
+Changes
+lib/HTML/Widget/DBIC.pm
+t/001_load.t
+t/lib/DBSchema.pm
+t/lib/DBSchema/User.pm
+t/lib/DBSchema/Dvd.pm
+t/lib/DBSchema/Tag.pm
+t/lib/DBSchema/Dvdtag.pm
+t/lib/DBSchema/UserRole.pm
+t/lib/DBSchema/Role.pm
+t/var/dvdzbr.db
+t/100_create.t
+t/001_load.t
+Makefile.PL
+META.yml                                 Module meta-data (added by MakeMaker)
