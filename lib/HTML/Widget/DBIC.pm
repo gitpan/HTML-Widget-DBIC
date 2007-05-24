@@ -5,7 +5,7 @@ use warnings;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 0.02;
+	$VERSION     = 0.03;
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw ();
@@ -99,7 +99,8 @@ sub create_from_config {
             @options = _get_options( $schema->resultset( $col->{foreign_class} ) );
         }
         my $element = _make_elem( $self, $col, @options );
-        $element->value( _getval($item, $col, $schema) ) if $item;
+        $element->value( _getval($item, $col, $schema) ) if $item &&
+        $element->can('value');
         _make_constraints( $self, $col );
     }
     $self->{dbic_config} = $config;

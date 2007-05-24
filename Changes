@@ -1,5 +1,9 @@
 Revision history for Perl module HTML::Widget::DBIC
 
+0.03 Thu May 24 14:00:28 UTC 2007
+    - some doc changes, patch for HTML::Widget::Element::Upload applied
+      (http://rt.cpan.org/Public/Bug/Display.html?id=25062)
+
 0.01 Wed Sep 27 10:46:32 2006
 	- original version; created by ExtUtils::ModuleMaker 0.32
 
