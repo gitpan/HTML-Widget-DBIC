@@ -8,7 +8,7 @@ WriteMakefile(
     ABSTRACT     => '',
     PREREQ_PM    => {
                      'Test::Simple' => 0.44,
-                     'HTML::Widget' => 0,
+                     'HTML::Widget' => 1.10,
                      'DBIx::Class'  => 0,
                     },
 );

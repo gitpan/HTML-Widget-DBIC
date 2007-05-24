@@ -62,11 +62,11 @@ $schema->populate('Tag', [
 
 
 $schema->populate('Dvd', [
-    [ qw/id name imdb_id owner current_owner creation_date alter_date hour/ ],
-    [ 1, 'Picnick under the Hanging Rock', 123, 1, 1, '', '', ''],
-    [ 2, 'The Deerhunter', 1234, 1, 1, '', '', ''],
-    [ 3, 'Rejs', 1235, 1, 1, '', '', ''],
-    [ 4, 'Seksmisja', 1236, 1, 1, '', '', ''],
+    [ qw/id name imdb_id owner current_owner creation_date alter_date / ],
+    [ 1, 'Picnick under the Hanging Rock', 123, 1, 1, '', '' ],
+    [ 2, 'The Deerhunter', 1234, 1, 1, '', '' ],
+    [ 3, 'Rejs', 1235, 1, 1, '', '' ],
+    [ 4, 'Seksmisja', 1236, 1, 1, '', '' ],
     ]
 ); 
 
@@ -81,12 +81,10 @@ my $resultset = $schema->resultset( 'Tag' );
 my $widget = HTML::Widget::DBIC->create_from_config( $config, $resultset );
 my $result = $widget->process;
 ok ( $result->as_xml =~ qr{<label for="widget_dvds" id="widget_dvds_label">Dvds<select class="select" id="widget_dvds" multiple="multiple" name="dvds"><option value="0"></option><option value="1">Picnick under the Hanging Rock</option><option value="2">The Deerhunter</option><option value="3">Rejs</option><option value="4">Seksmisja</option></select></label>}, 'SELECT values from db' ) or warn $result->as_xml; 
-
 my $item = $resultset->find( 1 ); 
 $widget = HTML::Widget::DBIC->create_from_config( $config, $resultset, $item );
 $result = $widget->process;
 ok ( $result->as_xml =~ qr{<option value="0"></option><option value="1">Picnick under the Hanging Rock</option><option value="2">The Deerhunter</option><option selected="selected" value="3">Rejs</option><option selected="selected" value="4">Seksmisja</option>}, 'SELECT selected from item' ) or warn $result->as_xml; 
-
 $widget = HTML::Widget::DBIC->create_from_config( $config, $resultset );
 my $query = new CGI( {'name'=>'New Tag', 'dvds'=>[1, 2]});
 $result = $widget->process ( $query );

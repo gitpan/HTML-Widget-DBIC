@@ -9,7 +9,10 @@ use base 'DBIx::Class';
 
 __PACKAGE__->load_components("PK::Auto", "Core");
 __PACKAGE__->table("dvdtag");
-__PACKAGE__->add_columns("dvd", "tag");
+__PACKAGE__->add_columns(
+    "dvd" => { data_type => 'integer' },
+    "tag" => { data_type => 'integer' },
+);
 __PACKAGE__->set_primary_key("dvd", "tag");
 __PACKAGE__->belongs_to("dvd", "Dvd", { id => "dvd" });
 __PACKAGE__->belongs_to("tag", "Tag", { id => "tag" });

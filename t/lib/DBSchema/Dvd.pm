@@ -11,14 +11,25 @@ use overload '""' => sub {$_[0]->name}, fallback => 1;
 __PACKAGE__->load_components("PK::Auto", "Core");
 __PACKAGE__->table("dvd");
 __PACKAGE__->add_columns(
-  "id",
-  "name",
-  "imdb_id",
-  "owner",
-  "current_owner",
-  "creation_date",
-  "alter_date",
-  "hour",
+  "id" => {
+    data_type => 'integer',
+    is_auto_increment => 1
+  },
+  'name' => {
+    data_type => 'varchar',
+    size      => 100,
+    is_nullable => 1,
+  },
+  "imdb_id" => {
+    data_type => 'varchar',
+    size      => 100,
+    is_nullable => 1,
+  },
+  "owner" => { data_type => 'integer' },
+  "current_owner" => { data_type => 'integer' },
+
+  "creation_date" => { data_type => 'datetime' },
+  "alter_date" => { data_type => 'datetime' },
 );
 __PACKAGE__->set_primary_key("id");
 __PACKAGE__->belongs_to("owner", "User", { id => "owner" });
